@@ -1,7 +1,11 @@
-package candy;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import candy.Candy;
+import candy.CandyRecommender;
+import candy.IngredientMap;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -10,11 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 class CandyRecommenderTest {
-
     private List<Candy> candies = new ArrayList<>();
     private List<String> likes = new ArrayList<>();
     private List<String> dislikes = new ArrayList<>();
@@ -23,49 +23,48 @@ class CandyRecommenderTest {
     @BeforeEach
     void setUp() throws Exception {
     }
+    
+    @Test
+    void testUserLikesAllIngredients() {
+        /**
+         * Purpose: to test what happens if user likes all ingredients
+         * Method: findLikedCandies
+         * Initialization: IngredientMap
+         * Parameters: None
+         * Correct result: a full set of Candy.
+         */
+        try {
+            CandyRecommender.readCandyFile();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        for (String ingredient : ingredientMap.ingredients()) {
+            likes.add(ingredient);
+        }
+        Set<Candy> possible = CandyRecommender.findLikedCandies();
+        assertEquals(possible, candies.size());
+    }
 
     @Test
-    void testNoRecommendation() {
-        /**
-         * Purpose: test user is neutral about all ingredients
-         * Method: findLikedCandies
-         * Initialization: IngredientMap
-         * Parameters: None
-         * Correct result: an empty set of Candy.
-         */
+    /**
+     * Purpose: to test what happens if input is invalid
+     * Method: readCandyFile
+     * Initialization: IngredientMap
+     * Parameters: None
+     * Correct result: an error is any input is invalid
+     */
+    void invalidInputTest() {
         try {
             CandyRecommender.readCandyFile();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        for (String ingredient : ingredientMap.ingredients()) {
-            //add nothing to the map
-        }
-        Set<Candy> possible = CandyRecommender.findLikedCandies();
-        assertTrue(possible.size() == 0);
+        for (Candy candy : candies) {
+            assertTrue(candy.equals("1234567890"));
+        }      
     }
 
-     @Test
-    void testUserDislikesAllIngredients() {
-        /**
-         * Purpose: to test what happens if user dislikes all ingredients
-         * Method: findLikedCandies
-         * Initialization: IngredientMap
-         * Parameters: None
-         * Correct result: an empty set of Candy.
-         */
-        try {
-            CandyRecommender.readCandyFile();
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        for (String ingredient : ingredientMap.ingredients()) {
-            dislikes.add(ingredient);
-        }
-        Set<Candy> possible = CandyRecommender.findLikedCandies();
-        assertEquals(possible, null);
-    }
 
 }
