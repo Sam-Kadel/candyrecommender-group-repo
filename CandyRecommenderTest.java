@@ -62,7 +62,7 @@ class CandyRecommenderTest {
             e.printStackTrace();
         }
         for (Candy candy : candies) {
-            assertTrue(candy.equals("1234567890"));
+            assertFalse(candy.equals("1234567890"));
         }      
     }
 
