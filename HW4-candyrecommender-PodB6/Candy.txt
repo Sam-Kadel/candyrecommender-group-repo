@@ -1,0 +1,18 @@
+Snickers:CHOCOLATE,CARAMEL,PEANUTS
+Hershey kisses:CHOCOLATE
+Heath bar:CHOCOLATE,TOFFEE
+Reese's peanut butter cup:CHOCOLATE,PEANUT BUTTER
+M&Ms:CHOCOLATE
+Peanut M&Ms:CHOCOLATE,PEANUTS
+Peppermint patties:CHOCOLATE,PEPPERMINT
+Twizzler's:LICORICE
+Swedish fish:FRUIT
+Starburst:FRUIT
+Jelly beans:FRUIT
+Jolly rancher:FRUIT
+Raisinets:FRUIT,CHOCOLATE
+Red Hots:CINNAMON
+Rolo:CHOCOLATE,CARAMEL
+Skittles:FRUIT
+Good and Plenty:LICORICE
+Almond Joy:CHOCOLATE,COCONUT,ALMONDS
